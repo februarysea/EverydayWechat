@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
 import datetime
@@ -59,11 +60,10 @@ itchat.auto_login()
 friend = itchat.search_friends(name="Bin")
 user_name = friend[0]['UserName']
 
-# 定时任务
+# send message on time
 scheduler = BlockingScheduler()
-# 每隔3秒发送一条数据用于测试。
 scheduler.add_job(func=sendMessage, trigger='cron',
-                  hour=14, minute=2, args=[user_name, message])
+                  hour=8, minute=0, args=[user_name, message])
 scheduler.start()
 
 
